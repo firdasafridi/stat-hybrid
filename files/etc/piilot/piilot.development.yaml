@@ -1,0 +1,10 @@
+version: "0.0.1"
+
+server: 
+  name: "piilot"
+  http: 
+    address: ":8080"
+    write_timeout: 1
+    read_timeout: 2
+    max_header_bytes: 500000
+    enable: true

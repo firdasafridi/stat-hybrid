@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "cb9d01b0-06bf-4821-99bc-3a9020e8facb",
+		"name": "000 - PII Sample http",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8716211"
+	},
+	"item": [
+		{
+			"name": "pii sample",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
