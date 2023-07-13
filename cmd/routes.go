@@ -8,7 +8,6 @@ import (
 	piihandler "github.com/firdasafridi/stat-hybrid/internal/handler/pii"
 	"github.com/firdasafridi/stat-hybrid/lib/common/log"
 	"github.com/firdasafridi/stat-hybrid/lib/common/writer"
-
 )
 
 type moduleHandler struct {
@@ -25,5 +24,6 @@ func newRoutes(mHandler moduleHandler) *chi.Mux {
 	}))
 
 	router.Get("/pii", mHandler.PIIHandler.GetPIIData)
+	router.Get("/pii/hybrid-encryption", mHandler.PIIHandler.GetPIIDataHybridEncrypt)
 	return router
 }

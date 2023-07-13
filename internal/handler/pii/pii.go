@@ -14,7 +14,6 @@ type PIIHandler struct {
 func (h *PIIHandler) GetPIIData(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
-
 	data, err := h.PIIUC.GetPIIData(ctx)
 	if err != nil {
 		commonwriter.WriteJSONAPIError(ctx, w, err)
@@ -24,3 +23,15 @@ func (h *PIIHandler) GetPIIData(w http.ResponseWriter, r *http.Request) {
 	commonwriter.SetOKWithData(ctx, w, data)
 }
 
+func (h *PIIHandler) GetPIIDataHybridEncrypt(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+
+	chipperData, chipperKey, err := h.PIIUC.GetPIIDataHybridEncrypt(ctx)
+	if err != nil {
+		commonwriter.WriteJSONAPIError(ctx, w, err)
+		return
+	}
+
+	w.Header().Add("key", chipperKey)
+	commonwriter.SetOKWithData(ctx, w, chipperData)
+}

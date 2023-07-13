@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/firdasafridi/stat-hybrid/internal/config"
 	"github.com/firdasafridi/stat-hybrid/lib/common/log"
-
 )
 
 const (
