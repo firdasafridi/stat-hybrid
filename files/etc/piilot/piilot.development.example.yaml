@@ -8,3 +8,6 @@ server:
     read_timeout: 2
     max_header_bytes: 500000
     enable: true
+  hybrid_encription:
+    public_key: ""
+    private_key: ""
