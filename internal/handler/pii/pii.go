@@ -26,12 +26,12 @@ func (h *PIIHandler) GetPIIData(w http.ResponseWriter, r *http.Request) {
 func (h *PIIHandler) GetPIIDataHybridEncrypt(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
-	chipperData, chipperKey, err := h.PIIUC.GetPIIDataHybridEncrypt(ctx)
+	chiperData, chiperKey, err := h.PIIUC.GetPIIDataHybridEncrypt(ctx)
 	if err != nil {
 		commonwriter.WriteJSONAPIError(ctx, w, err)
 		return
 	}
 
-	w.Header().Add("key", chipperKey)
-	commonwriter.SetOKWithData(ctx, w, chipperData)
+	w.Header().Add("key", chiperKey)
+	commonwriter.SetOKWithData(ctx, w, chiperData)
 }

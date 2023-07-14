@@ -7,7 +7,7 @@ import (
 )
 
 type HBE interface {
-	Encrypt(ctx context.Context, plain string) (chipper string, key string, err error)
+	Encrypt(ctx context.Context, plain string) (chiper string, key string, err error)
 }
 
 type HybridEncryption struct {
@@ -26,21 +26,21 @@ func NewHybridEncryption(rsaOption RSAOption) (hb *HybridEncryption, err error) 
 	}, nil
 }
 
-func (h *HybridEncryption) Encrypt(ctx context.Context, plain string) (chipperData string, chipperKey string, err error) {
+func (h *HybridEncryption) Encrypt(ctx context.Context, plain string) (chiperData string, chiperKey string, err error) {
 	aes, err := NewAES([]byte(common.RandomString(32)))
 	if err != nil {
 		return
 	}
 
-	chipperKey, err = h.RSARepo.Encrypt([]byte(aes.Key))
+	chiperKey, err = h.RSARepo.Encrypt([]byte(aes.Key))
 	if err != nil {
 		return
 	}
 
-	chipperDataByte, err := aes.AESEncrypt([]byte(plain))
+	chiperDataByte, err := aes.AESEncrypt([]byte(plain))
 	if err != nil {
 		return
 	}
-	chipperData = string(chipperDataByte)
+	chiperData = string(chiperDataByte)
 	return
 }

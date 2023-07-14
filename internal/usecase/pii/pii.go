@@ -10,7 +10,7 @@ import (
 
 type PIIUC interface {
 	GetPIIData(ctx context.Context) (piiList []piidomain.TrxPII, err error)
-	GetPIIDataHybridEncrypt(ctx context.Context) (chipperData string, chipperKey string, err error)
+	GetPIIDataHybridEncrypt(ctx context.Context) (chiperData string, chiperKey string, err error)
 	countriesUC
 }
 
@@ -37,7 +37,7 @@ func (uc *PII) GetPIIData(ctx context.Context) (piiList []piidomain.TrxPII, err 
 	}, nil
 }
 
-func (uc *PII) GetPIIDataHybridEncrypt(ctx context.Context) (chipperData string, chipperKey string, err error) {
+func (uc *PII) GetPIIDataHybridEncrypt(ctx context.Context) (chiperData string, chiperKey string, err error) {
 	PIIPlainData, err := uc.GetPIIData(ctx)
 	if err != nil {
 		return
@@ -45,7 +45,7 @@ func (uc *PII) GetPIIDataHybridEncrypt(ctx context.Context) (chipperData string,
 
 	PIIPlainDataByte, _ := json.Marshal(PIIPlainData)
 
-	chipperData, chipperKey, err = uc.HBELIB.Encrypt(ctx, string(PIIPlainDataByte))
+	chiperData, chiperKey, err = uc.HBELIB.Encrypt(ctx, string(PIIPlainDataByte))
 	if err != nil {
 		return
 	}
