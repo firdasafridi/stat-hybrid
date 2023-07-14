@@ -37,8 +37,15 @@ type NewRelic struct {
 
 // Server manage handler HTTP and Open PII lot server
 type Server struct {
-	Name string `json:"name" yaml:"name"`
-	HTTP HTTP   `json:"http" yaml:"http"`
+	Name             string           `json:"name" yaml:"name"`
+	HTTP             HTTP             `json:"http" yaml:"http"`
+	HybridEncryption HybridEncryption `json:"hybrid_encription" yaml:"hybrid_encription"`
+}
+
+// Server manage handler HTTP and Open PII lot server
+type HybridEncryption struct {
+	PublicKey  string `json:"public_key" yaml:"public_key"`
+	PrivateKey string `json:"private_key" yaml:"private_key"`
 }
 
 // HTTP contains address and http namagement

@@ -54,12 +54,14 @@ func write(ctx context.Context, w http.ResponseWriter, data interface{}, status 
 }
 
 func set(ctx context.Context, w http.ResponseWriter, datab []byte, status int) {
+
+	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(status)
-	w.Header().Set("Content-Type", "application/json")
 	_, err := w.Write(datab)
 	if err != nil {
 		log.Errorln("[HTTP]", err)
 	}
+
 }
 
 type Format struct {
