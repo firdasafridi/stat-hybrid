@@ -13,8 +13,7 @@ func app(cfg *config.Config) moduleHandler {
 		PubKey:     cfg.Server.HybridEncryption.PublicKey,
 		PrivateKey: cfg.Server.HybridEncryption.PrivateKey,
 	})
-	// fmt.Println(cfg.Server.HybridEncryption.PublicKey)
-	// fmt.Println(cfg.Server.HybridEncryption.PrivateKey)
+
 	if err != nil {
 		panic(err)
 	}
